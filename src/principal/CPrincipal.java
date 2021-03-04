@@ -18,7 +18,7 @@ public class CPrincipal {
     private static final Clientes[] MISCLIENTES = new Clientes[TAMANIO_ARRAY];
     private static int contadorClientes = 2;
     private static Productos[] MISPRODUCTOS = new Productos[TAMANIO_ARRAY];
-    private static int contadorProdcutos = 0;
+    private static int contadorProdcutos = 2;
 
     /**
      * @param args Menu principal donde se inicia la ejecución del programa
@@ -90,10 +90,18 @@ public class CPrincipal {
      */
     public static void guardarDatos() {
         for (int i = 0; i < contadorClientes; i++) {
-            try {
-                IO_ES.escribirArchivo("C:/Users/dgdan/Desktop/DatosClientes.dat", MISCLIENTES[i].datosClientes(), true);
-            } catch (Exception e) {
+            IO_ES.escribirArchivo("C:/Users/dgdan/Desktop/DatosClientes.dat", MISCLIENTES[i].datosClientes(), true);
+        }
+        for (int i = 0; i < contadorProdcutos; i++) {
+            if (MISPRODUCTOS[i] instanceof Medicamento) {
+                Medicamento referencia = (Medicamento) MISPRODUCTOS[i];
+                IO_ES.escribirArchivo("C:/Users/dgdan/Desktop/DatosProductos.dat", referencia.datosMedicamentos(), true);
             }
+            if (MISPRODUCTOS[i] instanceof ParaFarmacia) {
+                ParaFarmacia referencia = (ParaFarmacia) MISPRODUCTOS[i];
+                IO_ES.escribirArchivo("C:/Users/dgdan/Desktop/DatosProductos.dat", referencia.datosParafarmacia(), true);
+            }
+
         }
         IO_ES.escribirLN(Color.verde() + "Los datos se han guardado correctamente" + Color.reset());
     }

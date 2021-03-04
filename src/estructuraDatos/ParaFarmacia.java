@@ -59,7 +59,7 @@ public class ParaFarmacia extends Productos {
      * @return Devuelve los datos de Parafarmacia con un formato de guardado
      */
     public String datosParafarmacia() {
-        String datosParaFarmacia = "Código: " + this.codigo + "&" + "Nombre: " + this.nombre + "&" + "Descripción: " + this.descripcion + "&" + "Precio: " + this.precio + "&" + "Unidades: " + this.unidades + "&" + "Categoria: " + this.categoria + "&" + "Dosis de las unidades: " + this.dosisUnidades + "&" + "Descuento: " + this.descuento;
+        String datosParaFarmacia = this.codigo + "&" + this.nombre + "&" + this.descripcion + "&" + this.precio + "&" + this.unidades + "&" + this.categoria + "&" + this.dosisUnidades + "&" + this.descuento;
         return datosParaFarmacia;
     }
 

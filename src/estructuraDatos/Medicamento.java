@@ -59,7 +59,7 @@ public class Medicamento extends Productos {
      * @return Devuelve los datos del Medicamento con un formato de guardado
      */
     public String datosMedicamentos() {
-        String datosMedicamento = "Código: " + this.codigo + "&" + "Nombre: " + this.nombre + "&" + "Descripción: " + this.descripcion + "&" + "Precio: " + this.precio + "&" + "Unidades: " + this.unidades + "&" + "Tipo del medicamento: " + this.tipoMedicamento + "&" + "Toma del medicamento: " + this.comoTomar + "&" + "Efectos adversos: " + this.efectosAdversos;
+        String datosMedicamento = this.codigo + "&" + this.nombre + "&" + this.descripcion + "&" + this.precio + "&" + this.unidades + "&" + this.tipoMedicamento + "&" + this.comoTomar + "&" + this.efectosAdversos;
         return datosMedicamento;
     }
 
