@@ -73,6 +73,9 @@ abstract public class Productos {
      * @param codigo del Producto
      * @return Devuelve true o false si el codigo es correcto o falso
      */
+    
+    //Metodo guardar
+    
     public static boolean comprobarCodigo(String codigo) {
         Pattern codigoPattern = Pattern.compile("[0-9]{13}"); // Patrón para comprobar el código de los productos
         Matcher m = codigoPattern.matcher(codigo);

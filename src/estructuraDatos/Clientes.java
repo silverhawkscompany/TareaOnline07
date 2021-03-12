@@ -57,7 +57,7 @@ public class Clientes {
      * @return Devuelve los datos de clientes con un formato de guardado
      */
     public String datosClientes() {
-        String datosClientes = this.id + " & " + this.nombre + " & " + this.telefono + " & " + this.direccion;
+        String datosClientes = this.id + "&" + this.nombre + "&" + this.telefono + "&" + this.direccion + "\n";
         return datosClientes;
     }
 

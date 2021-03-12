@@ -1,5 +1,6 @@
 package utilidades;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -29,7 +30,8 @@ public class IO_ES {
             //Con true conseguimos añadir nuevos String al archivo
             FileWriter escritura = new FileWriter(ruta, sobrescribir);
             escritura.write(datos);
-            escritura.write("\n");
+            //Salto de linea en datosCLiente
+            //escritura.write("\n");
             correcto = true;
             escritura.close();
         } catch (Exception e) {
@@ -41,20 +43,30 @@ public class IO_ES {
     /**
      * Método para leer datos
      *
-     * @param ruta La ruta y el nombre del archivo donde se quiere leer el
-     * archivo
-     * @return Devuelve el contenido como una cadena de caracteres
      */
-    public static String leerArchivo(String ruta) {
-        String datosClientes = null;
+    public static String leerArchivo(String rutaArchivo) {
+        String res = "";
+        Scanner sc = null;
+        File fichero = new File(rutaArchivo);
         try {
-            FileReader lectura = new FileReader(ruta);
-            datosClientes = lectura.toString();
-            lectura.close();
-        } catch (IOException e) {
-            System.out.println("No se ha encontrado el archivo");
+            System.out.println("Leyendo el contenido del fichero..........");
+            sc = new Scanner(fichero);
+            // leer línea a linea el fichero while (sc.hasNextLine()) {
+            res += sc.nextLine() + "\n";
+
+            System.out.println("Lectura terminada......");
+        } catch (Exception e) {
+            System.out.println("Mensaje: " + e.getMessage());
+        } finally {
+            try {
+                if (sc != null) {
+                    sc.close();
+                }
+            } catch (Exception e2) {
+                System.out.println("Mensaje fichero: " + e2.getMessage());
+            }
         }
-        return datosClientes;
+        return res;
     }
 
     /**

@@ -90,7 +90,7 @@ public class CPrincipal {
      */
     public static void guardarDatos() {
         for (int i = 0; i < contadorClientes; i++) {
-            IO_ES.escribirArchivo("C:/Users/dgdan/Desktop/DatosClientes.dat", MISCLIENTES[i].datosClientes(), true);
+            IO_ES.escribirArchivo("DatosClientes.dat", MISCLIENTES[i].datosClientes(), true);
         }
         for (int i = 0; i < contadorProdcutos; i++) {
             if (MISPRODUCTOS[i] instanceof Medicamento) {
@@ -110,7 +110,18 @@ public class CPrincipal {
      * Método para leer los datos del programa
      */
     public static void leerDatos() {
-        IO_ES.leerArchivo("C:/Users/dgdan/Desktop/DatosClientes.dat");
+        String contenido = IO_ES.leerArchivo("DatosClientes.dat");
+        //Todas las lineas del archivo cliente
+        String[] lineas = contenido.split("\n");
+        contadorClientes = 0;
+        for (int i = 0; i < lineas.length; i++) {
+            String[] argumentos = lineas[i].split("&");
+            if (argumentos.length == 5) {//Son los atributos de la clase Clientes
+                MISCLIENTES[contadorClientes] = new Clientes(argumentos[0], argumentos[1], argumentos[2], argumentos[3]);
+                MISCLIENTES[contadorClientes].setBaja(Boolean.parseBoolean(argumentos[4]));
+                contadorClientes++;
+            }
+        }
     }
 
     /**
